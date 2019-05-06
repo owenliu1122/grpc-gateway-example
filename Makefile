@@ -67,9 +67,9 @@ proto:
 	# go install github.com/mwitkow/go-proto-validators/protoc-gen-govalidators
 	# mkdir -p $GOPATH/src/github.com/googleapis && git clone https://github.com/googleapis/googleapis.git $GOPATH/src/github.com/googleapis/googleapis
 	# gateway 相关
-    # mkdir -p $GOPATH/src/google.golang.org && git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto
-    # go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
-    # go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+	# mkdir -p $GOPATH/src/google.golang.org && git clone https://github.com/google/go-genproto.git $GOPATH/src/google.golang.org/genproto
+	# go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
+	# go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 	@protoc \
 		--proto_path=${GOPATH}/src \
 		--proto_path=${GOPATH}/src/github.com/google/protobuf/src \
