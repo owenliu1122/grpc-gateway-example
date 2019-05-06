@@ -19,7 +19,7 @@ var _ = math.Inf
 
 func (this *HelloWorldReq) Validate() error {
 	if this.Name == "" {
-		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`merchant_id is required`))
+		return github_com_mwitkow_go_proto_validators.FieldError("Name", fmt.Errorf(`name is required`))
 	}
 	return nil
 }

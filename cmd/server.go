@@ -8,7 +8,10 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/mwitkow/go-proto-validators"
+
 	"github.com/owenliu1122/grpc-gateway-example/pb"
+	"golang.org/x/net/context"
 
 	"github.com/owenliu1122/grpc-gateway-example/internal/controllers"
 	log "github.com/sirupsen/logrus"
@@ -37,6 +40,14 @@ func serverProc(cmd *cobra.Command, args []string) {
 	handleInitError("net", err)
 
 	gs := grpc.NewServer(
+		grpc.UnaryInterceptor(func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+			err = validator.CallValidatorIfExists(req)
+			if err != nil {
+				return
+			}
+			// 继续处理请求
+			return handler(ctx, req)
+		}),
 		grpc.KeepaliveParams(keepalive.ServerParameters{
 			Time: 10 * time.Minute,
 		}),
