@@ -1,0 +1,25 @@
+syntax = "proto3";
+package owenliu1122.grpc_gateway_example;
+
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+import "google/api/annotations.proto";
+
+option go_package = "pb";
+
+message HelloWorldReq {
+    string name = 1 [(validator.field) = {string_not_empty : true, human_error : "name is required"}];
+}
+
+message HelloWorldResp {
+    string echo = 2;
+}
+
+service HelloWorld {
+    rpc HelloWorld (HelloWorldReq) returns (HelloWorldResp) {
+        // SayHi 接口的 RESTful 格式选项
+        option (google.api.http) = {
+        	post: "/api/hello-world"
+        	body: "*"
+        };
+    }
+}

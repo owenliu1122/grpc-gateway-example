@@ -1,0 +1,8 @@
+api_server:
+  port: 30001
+
+client:
+  address: 127.0.0.1:30001
+
+gateway:
+  endpoint: 127.0.0.1:30001
